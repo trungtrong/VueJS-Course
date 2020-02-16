@@ -6,14 +6,19 @@
 </head>
 <body>
 	<div id="app">
-	  <p>{{ sayHello() }}</p>
+		<!-- Using v-bind:href="<property>" -->
+		<p>
+		  	{{ sayHello() }}
+		  	<a v-bind:href="link">Google</a>
+		</p>
 	</div>
 </body>
 <script>
 	new Vue({
 		el: '#app',
 		data: {
-		  	title: 'Hello world'
+		  	title: 'Hello world',
+		  	link: 'http://google.com'
 		},
 		methods: {
 		  	sayHello: function() {

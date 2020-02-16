@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VueJS</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- Case 1:
+			If not using v-once, when sayHello() works
+			=> data of title will change
+ 		 -->
+		<!-- <h3>{{ title }}</h3>
+		<p>
+		  	{{ sayHello() }}
+		  	<a v-bind:href="link">Google</a>
+		</p>
+ -->
+		<!-- Case 2:
+			When using v-once, althought sayHello() works
+			=> data of title don't be changed
+ 		 -->
+  		<!-- v-once must be on the top of sayHello() in Interpolation -->
+		<h3 v-once>{{ title }}</h3>
+		<p>
+		  	{{ sayHello() }}
+		  	<a v-bind:href="link">Google</a>
+		</p>
+	</div>
+</body>
+<script>
+	new Vue({
+		el: '#app',
+		data: {
+		  	title: 'Hello world',
+		  	link: 'http://google.com'
+		},
+		methods: {
+		  	sayHello: function() {
+		  		this.title = 'Happy New Year';
+		    	return 'Hello';
+			}
+		}
+	});
+</script>
+</html>

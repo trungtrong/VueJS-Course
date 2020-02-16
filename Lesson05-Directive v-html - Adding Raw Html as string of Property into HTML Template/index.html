@@ -6,19 +6,16 @@
 </head>
 <body>
 	<div id="app">
-	  <p>{{ sayHello() }}</p>
+		<p v-html="quotationFile"></p>
 	</div>
 </body>
 <script>
 	new Vue({
 		el: '#app',
 		data: {
-		  	title: 'Hello world'
+			quotationFile: '<div>Nha Cung Cap</div>'
 		},
 		methods: {
-		  	sayHello: function() {
-		    	return this.title;
-			}
 		}
 	});
 </script>

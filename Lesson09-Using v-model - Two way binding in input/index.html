@@ -6,19 +6,17 @@
 </head>
 <body>
 	<div id="app">
-	  <p>{{ sayHello() }}</p>
+		<input type="text" v-model="name">
+		<p>{{ name }}</p>
 	</div>
 </body>
 <script>
 	new Vue({
 		el: '#app',
 		data: {
-		  	title: 'Hello world'
+			name: 'Max'
 		},
 		methods: {
-		  	sayHello: function() {
-		    	return this.title;
-			}
 		}
 	});
 </script>

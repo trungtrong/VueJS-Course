@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VueJS</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button v-on:click="increaseCount()">Click</button>
+
+		<button v-on:click="count++">Click Eventually</button>
+		<p>{{ count * 2 }}</p>
+		<p>{{ count * 2 > 10 ? 'Greater than 10' : 'Smaller than 10' }}</p>
+
+	</div>
+</body>
+<script>
+	new Vue({
+		el: '#app',
+		data: {
+			count: 0,
+			x: 0,
+			y: 0
+		},
+		methods: {
+			increaseCount: function() {
+				this.count++;
+			}
+		}
+	});
+</script>
+</html>

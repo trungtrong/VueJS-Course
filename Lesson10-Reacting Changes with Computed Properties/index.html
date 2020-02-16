@@ -6,21 +6,23 @@
 </head>
 <body>
 	<div id="app">
-	  <input type="text" v-on:input="changeTitle">
-	  <p>{{ title }}</p>
+		<button v-on:click="counter++">Increase</button>
+		<button v-on:click="counter--">Decrease</button>
+		<p>Counter: {{ counter }}</p>
+		<p>Result: {{ result() }}</p>
 	</div>
 </body>
 <script>
 	new Vue({
 		el: '#app',
-	  data: {
-	  	title: 'Hello world'
-	  },
-	  methods: {
-	  	changeTitle: function(event) {
-	    	this.title = event.target.value;
-	    }
-	  }
+		data: {
+			counter: 0
+		},
+		methods: {
+			result() {
+				return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+			}
+		}
 	});
 </script>
 </html>
@@ -33,6 +35,4 @@
 	- computed: {} Dependent Properties
 	- watch: {} execute code whenever a specific properties changes
 			=> it works as asynchonous
-		
-
  -->

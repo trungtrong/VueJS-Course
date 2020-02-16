@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VueJS</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- Modifying an Event: .stop = event.stopPropagation() in JS -->
+		<!-- <p v-on:mousemove="updateCoordinates">
+			Coordinates: {{ x }} / {{ y }}
+			- <span v-on:mousemove.step>DEAD SPOT</span>
+		</p> -->
+
+		<!-- KeyBoard EventListeners -->
+		<p>All keys</p>
+		<input type="text" v-on:keyup="alertMe">
+
+		<hr>
+		<!-- Only Enter key -->
+		<p>Only Enter key - v-on:keyup.enter</p>
+		<input type="text" v-on:keyup.enter="alertMe">
+
+		<hr>
+		<!-- Only Enter key -->
+		<p>Only Enter and Space key - v-on:keyup.enter.space</p>
+		<input type="text" v-on:keyup.enter.space="alertMe">
+
+	</div>
+</body>
+<script>
+	new Vue({
+		el: '#app',
+		data: {
+			count: 0,
+			x: 0,
+			y: 0
+		},
+		methods: {
+			increaseCount: function(event) {
+				console.log('e', event);
+				this.count++;
+			},
+
+			updateCoordinates: function(event) {
+				this.x = event.clientX;
+				this.y = event.clientY;
+			},
+
+			alertMe: function() {
+				alert("You're tying a key");
+			}
+		}
+	});
+</script>
+</html>
