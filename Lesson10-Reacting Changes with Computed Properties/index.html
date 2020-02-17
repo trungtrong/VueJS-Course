@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>VueJS</title>
+	<title>VueJS - Video 2-23</title>
 	<script src="../vue.js"></script>
 </head>
 <body>
 	<div id="app">
 		<button v-on:click="counter++">Increase</button>
 		<button v-on:click="counter--">Decrease</button>
-		<p>Counter: {{ counter }}</p>
-		<p>Result: {{ result() }}</p>
+		<button v-on:click="secondCounter++">Increase for secondCounter</button>
+		<p>Counter: {{ counter }} | {{ secondCounter }}</p>
+		<p>Result: {{ result() }} | {{ output }} </p>
 	</div>
 </body>
 <script>
 	new Vue({
 		el: '#app',
 		data: {
-			counter: 0
+			counter: 0,
+			secondCounter: 0
 		},
+		
+		computed: {
+			output() {
+				console.log('computed');
+				return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+			}
+		},
+
 		methods: {
 			result() {
+				console.log('method');
 				return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
 			}
 		}
@@ -32,7 +43,35 @@
 	- el: connect to DOM
 	- data: {} store properties's data to be used
 	- methods: {} methods of this Vue instance
+		+ methods is executed every time 
+			=> We don't want to catch the result
+			=> we wanna re-calculate every time 
+
 	- computed: {} Dependent Properties
+		+ store the data of properties
+		+ every (property or method) stored in <computed> can be used 
+			just like Properties in <data> object
+		+ it depend on Properties in <data> object
+		+ How we should use Properties in <computed> 
+			Ex: {{ output }}
+			=> we wanna catch the result, not re-calculate every time
+				the DOM gets updated
+				like {method} in <methods> object
+		
+			=> Therefore, <property> in <computed> works synchonous
+		+ Ex: 
+			computed: {
+				output() {
+					console.log('computed');
+					return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+					
+					=> output() in <computed> only depend on <counter> property 
+						of <data> object
+					=> output() will catch the changes of <counter>
+						but don't re-calculate the mathematic < ? : >
+				}
+			}
+
 	- watch: {} execute code whenever a specific properties changes
 			=> it works as asynchonous
  -->
